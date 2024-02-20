@@ -9,43 +9,66 @@ public class Auto {
     int registro;
     static int cantidadCreados = 0;
 
-    public Auto(String modelo, int precio, String marca, Motor motor, int registro, int cantidadAsientos) {
-        this.modelo = modelo;
-        this.precio = precio;
-        this.marca = marca;
-        this.motor = motor;
-        this.registro = registro;
-        this.asientos = new Asiento[cantidadAsientos];
+    // Constructor
+    public Auto() {
+        this.modelo = "";
+        this.precio = 0;
+        this.asientos = new Asiento[5]; // Se asume un tamaño de 5 asientos por defecto
+        this.marca = "";
+        this.motor = new Motor();
+        this.registro = 0;
         cantidadCreados++;
     }
 
-    public int cantidadAsientos() {
-        int cantidad = 0;
-        for (Asiento asiento : asientos) {
-            if (asiento != null) {
-                cantidad++;
-            }
-        }
-        return cantidad;
+    // Getters y Setters
+    public String getModelo() {
+        return modelo;
     }
 
-    public String verificarIntegridad() {
-        if (motor.getRegistro() != registro) {
-            return "Las piezas no son originales";
-        }
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
-        for (Asiento asiento : asientos) {
-            if (asiento != null && asiento.getRegistro() != registro) {
-                return "Las piezas no son originales";
-            }
-        }
+    public int getPrecio() {
+        return precio;
+    }
 
-        return "Auto original";
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public Asiento[] getAsientos() {
+        return asientos;
+    }
+
+    public void setAsientos(Asiento[] asientos) {
+        this.asientos = asientos;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
+    public int getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(int registro) {
+        this.registro = registro;
     }
 
     public static int getCantidadCreados() {
         return cantidadCreados;
     }
-
-}
-	
