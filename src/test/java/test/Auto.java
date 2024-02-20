@@ -1,13 +1,13 @@
 package test;
 
 public class Auto {
-	private String modelo;
-    private int precio;
-    private Asiento[] asientos;
-    private String marca;
-    private Motor motor;
-    private int registro;
-    private static int cantidadCreados = 0;
+	String modelo;
+    int precio;
+    Asiento[] asientos;
+    String marca;
+    Motor motor;
+    int registro;
+    static int cantidadCreados = 0;
 
     public Auto(String modelo, int precio, String marca, Motor motor, int registro, int cantidadAsientos) {
         this.modelo = modelo;
