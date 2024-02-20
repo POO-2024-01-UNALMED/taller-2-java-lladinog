@@ -1,73 +1,46 @@
 package test;
 
+import java.util.ArrayList;
+
 public class Auto {
 	String modelo;
     int precio;
-    Asiento[] asientos;
+    ArrayList<Asiento> asientos;
     String marca;
     Motor motor;
     int registro;
-    static int cantidadCreados = 0;
+    static int cantidadCreados;
 
     public Auto() {
-        this.modelo = "";
-        this.precio = 0;
-        this.asientos = new Asiento[5]; 
-        this.marca = "";
-        this.motor = new Motor();
-        this.registro = 0;
+    }
+
+    public Auto(String modelo, int precio, String marca, Motor motor, int registro) {
+        this.modelo = modelo;
+        this.precio = precio;
+        this.marca = marca;
+        this.motor = motor;
+        this.registro = registro;
+        this.asientos = new ArrayList<>();
         cantidadCreados++;
     }
 
-    public String getModelo() {
-        return modelo;
+    public int cantidadAsientos() {
+        int count = 0;
+        for (Asiento asiento : asientos) {
+            if (asiento != null) {
+                count++;
+            }
+        }
+        return count;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
-
-    public Asiento[] getAsientos() {
-        return asientos;
-    }
-
-    public void setAsientos(Asiento[] asientos) {
-        this.asientos = asientos;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public Motor getMotor() {
-        return motor;
-    }
-
-    public void setMotor(Motor motor) {
-        this.motor = motor;
-    }
-
-    public int getRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(int registro) {
-        this.registro = registro;
-    }
-
-    public static int getCantidadCreados() {
-        return cantidadCreados;
+    public String verificarIntegridad() {
+        if (this.registro != this.motor.registro)
+            return "Las piezas no son originales";
+        for (Asiento asiento : asientos) {
+            if (asiento != null && asiento.registro != this.registro)
+                return "Las piezas no son originales";
+        }
+        return "Auto original";
     }
 }
