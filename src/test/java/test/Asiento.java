@@ -3,9 +3,9 @@ package test;
 import java.util.Arrays;
 
 public class Asiento {
-    String color;
-    int precio;
-    int registro;
+	private String color;
+    private int precio;
+    private int registro;
 
     public Asiento(String color, int precio, int registro) {
         this.color = color;
@@ -19,8 +19,9 @@ public class Asiento {
             this.color = color;
         }
     }
+
     public int getRegistro() {
         return registro;
     }
 }
-
+    
