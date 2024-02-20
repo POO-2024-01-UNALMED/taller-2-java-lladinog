@@ -1,46 +1,50 @@
 package test;
 
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Auto {
-	String modelo;
-    int precio;
-    ArrayList<Asiento> asientos;
-    String marca;
-    Motor motor;
-    int registro;
-    static int cantidadCreados;
+	 static int cantidadCreados = 0;
+	    String modelo;
+	    double precio;
+	    Asiento[] asientos;
+	    String marca;
+	    Motor motor;
+	    int registro;
 
-    public Auto() {
-    }
+	    Auto() {
+	    }
 
-    public Auto(String modelo, int precio, String marca, Motor motor, int registro) {
-        this.modelo = modelo;
-        this.precio = precio;
-        this.marca = marca;
-        this.motor = motor;
-        this.registro = registro;
-        this.asientos = new ArrayList<>();
-        cantidadCreados++;
-    }
+	    Auto(String modelo, double precio, Asiento[] asientos, String marca, Motor motor, int registro) {
+	        this.modelo = modelo;
+	        this.precio = precio;
+	        this.asientos = asientos;
+	        this.marca = marca;
+	        this.motor = motor;
+	        this.registro = registro;
+	        cantidadCreados++;
+	    }
 
-    public int cantidadAsientos() {
-        int count = 0;
-        for (Asiento asiento : asientos) {
-            if (asiento != null) {
-                count++;
-            }
-        }
-        return count;
-    }
+	    int cantidadAsientos() {
+	        int count = 0;
+	        for (Asiento asiento : asientos) {
+	            if (asiento != null) {
+	                count++;
+	            }
+	        }
+	        return count;
+	    }
 
-    public String verificarIntegridad() {
-        if (this.registro != this.motor.registro)
-            return "Las piezas no son originales";
-        for (Asiento asiento : asientos) {
-            if (asiento != null && asiento.registro != this.registro)
-                return "Las piezas no son originales";
-        }
-        return "Auto original";
-    }
+	    String verificarIntegridad() {
+	        Set<Integer> registros = new HashSet<>();
+	        registros.add(this.registro);
+	        registros.add(this.motor.registro);
+	        for (Asiento asiento : asientos) {
+	            if (asiento != null) {
+	                registros.add(asiento.registro);
+	            }
+	        }
+	        return registros.size() == 1 ? "Auto original" : "Las piezas no son originales";
+	    }
+	
 }

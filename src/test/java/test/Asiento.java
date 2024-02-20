@@ -2,27 +2,29 @@ package test;
 
 
 class Asiento {
+
     String color;
     int precio;
     int registro;
 
-    public Asiento() {
-       
+    Asiento() {
     }
 
-    public Asiento(String color, int precio, int registro) {
+    Asiento(String color, int precio, int registro) {
         this.color = color;
         this.precio = precio;
         this.registro = registro;
     }
 
-    public void cambiarColor(String color) {
+    void cambiarColor(String color) {
         String[] coloresPermitidos = {"rojo", "verde", "amarillo", "negro", "blanco"};
-        for (String colorPermitido : coloresPermitidos) {
-            if (colorPermitido.equals(color)) {
+        for (String colores_permitido : coloresPermitidos) {
+            if (color.equalsIgnoreCase(colores_permitido)) {
                 this.color = color;
-                break;
+                return;
             }
         }
+        System.out.println("Color no permitido.");
     }
+
 }

@@ -6,23 +6,28 @@ public class Motor {
     String tipo;
     int registro;
 
-    public Motor() {
+    Motor() {
     }
 
-    public Motor(int numeroCilindros, String tipo, int registro) {
+    Motor(int numeroCilindros, String tipo, int registro) {
         this.numeroCilindros = numeroCilindros;
         this.tipo = tipo;
         this.registro = registro;
     }
 
-    public void cambiarRegistro(int registro) {
+    void cambiarRegistro(int registro) {
         this.registro = registro;
     }
 
-    public void asignarTipo(String tipo) {
-        if (tipo.equals("electrico") || tipo.equals("gasolina")) {
-            this.tipo = tipo;
+    void asignarTipo(String tipo) {
+        String[] tiposPermitidos = {"electrico", "gasolina"};
+        for (String tipoPermitido : tiposPermitidos) {
+            if (tipo.equalsIgnoreCase(tipoPermitido)) {
+                this.tipo = tipo;
+                return;
+            }
         }
+        System.out.println("Tipo no permitido.");
     }
 
 }
