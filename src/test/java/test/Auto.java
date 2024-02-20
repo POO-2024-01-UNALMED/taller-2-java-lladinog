@@ -9,18 +9,16 @@ public class Auto {
     int registro;
     static int cantidadCreados = 0;
 
-    // Constructor
     public Auto() {
         this.modelo = "";
         this.precio = 0;
-        this.asientos = new Asiento[5]; // Se asume un tamaño de 5 asientos por defecto
+        this.asientos = new Asiento[5]; 
         this.marca = "";
         this.motor = new Motor();
         this.registro = 0;
         cantidadCreados++;
     }
 
-    // Getters y Setters
     public String getModelo() {
         return modelo;
     }
@@ -72,3 +70,4 @@ public class Auto {
     public static int getCantidadCreados() {
         return cantidadCreados;
     }
+}

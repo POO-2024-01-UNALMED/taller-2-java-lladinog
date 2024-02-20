@@ -5,14 +5,12 @@ public class Motor {
     String tipo;
     int registro;
 
-    // Constructor
     public Motor() {
         this.numeroCilindros = 0;
         this.tipo = "";
         this.registro = 0;
     }
 
-    // Getters y Setters
     public int getNumeroCilindros() {
         return numeroCilindros;
     }

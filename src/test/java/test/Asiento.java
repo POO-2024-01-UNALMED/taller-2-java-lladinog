@@ -5,14 +5,12 @@ public class Asiento {
     int precio;
     int registro;
 
-    // Constructor
     public Asiento() {
         this.color = "";
         this.precio = 0;
         this.registro = 0;
     }
 
-    // Getters y Setters
     public String getColor() {
         return color;
     }
